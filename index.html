@@ -77,8 +77,12 @@
       $('.msg').text('Saving data...');
 
       // fire off the request
+      /*
+      https://script.google.com/macros/s/AKfycbypIOZydqI3ekA6DdJgkIIT6QzSN7FB1ifPO_-I2gTOaFxMObQ/exec
+      https://script.google.com/macros/s/AKfycbypIOZydqI3ekA6DdJgkIIT6QzSN7FB1ifPO_-I2gTOaFxMObQ/exec?id=$13CUM4hIcL95Qhdryq3FbKWZpYeggGdpH4Tno6DL0Uto&sheet=$guests2
+      */
       request = $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbypIOZydqI3ekA6DdJgkIIT6QzSN7FB1ifPO_-I2gTOaFxMObQ/exec",
+        url: "https://script.google.com/macros/s/AKfycbypIOZydqI3ekA6DdJgkIIT6QzSN7FB1ifPO_-I2gTOaFxMObQ/exec?id=$13CUM4hIcL95Qhdryq3FbKWZpYeggGdpH4Tno6DL0Uto&sheet=$guests2",
         type: "post",
         data: serializedData
       });

@@ -17,8 +17,9 @@ git push origin master
 
 
 git add --all
-git commit -m 'add all to repo'
-git push -u origin master
+git commit -m 'all'
+git remote add origin https://github.com/iosprogee/iosprogee.github.io
+git push origin master
 
 
 git init
