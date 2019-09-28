@@ -1,12 +1,22 @@
 https://pages.github.com/
 
-git config --global user.email "name@gmail.com"
-git config --global user.name "name"
+UPDATE iosprogee.github.io
+ git add --all
+ git commit -m 'all'
+ #git remote add origin https://github.com/iosprogee/iosprogee.github.io
+ git push origin master
+
+CHANGE NAME & EMAIL
+ git config --global user.email "name@gmail.com"
+ git config --global user.name "name"
+
+CONFIGGURE GIT
+ nano .git/config 
 
 GHPAGES to MASTER
-git checkout gh-pages
-git merge master
-git push origin gh-pages
+ git checkout gh-pages
+ git merge master
+ git push origin gh-pages
 
 echo "# dplyme.github.io" >> README.md
 git init
@@ -14,13 +24,6 @@ git add README.md
 git commit -m "1st"
 git remote add origin https://github.com/iosprogee/dplyme.git
 git push origin master
-
-
-git add --all
-git commit -m 'all'
-git remote add origin https://github.com/iosprogee/iosprogee.github.io
-git push origin master
-
 
 git init
 git add README.md
@@ -34,5 +37,3 @@ git remote add origin https://github.com/iosprogee/dplyd-me.git
 git pull origin master (pull all commits from master so not to overridde)
 git push origin master
 
-to reinit
-nano .git/config 
