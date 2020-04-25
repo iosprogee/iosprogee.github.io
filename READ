@@ -9,6 +9,7 @@ UPDATE <username>.github.io
 CHANGE NAME & EMAIL
  git config --global user.email "name@gmail.com"
  git config --global user.name "name"
+ git config --global --list
 
 CONFIGURE GIT
  nano .git/config 
