@@ -1,10 +1,10 @@
 https://pages.github.com/
 
 UPDATE <username>.github.io
- git add --all
+ git add -A             #--all
  git commit -m 'all'
  #git remote add origin https://github.com/<username>/<username>.github.io
- git push origin master
+ git push origin master # popup deny 
 
 CHANGE NAME & EMAIL
  git config --global user.email "name@gmail.com"
