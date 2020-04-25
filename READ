@@ -1,9 +1,9 @@
 https://pages.github.com/
 
-UPDATE iosprogee.github.io
+UPDATE <username>.github.io
  git add --all
  git commit -m 'all'
- #git remote add origin https://github.com/iosprogee/iosprogee.github.io
+ #git remote add origin https://github.com/<username>/<username>.github.io
  git push origin master
 
 CHANGE NAME & EMAIL
@@ -22,18 +22,18 @@ echo "# dplyme.github.io" >> README.md
 git init
 git add README.md
 git commit -m "1st"
-git remote add origin https://github.com/iosprogee/dplyme.git
+git remote add origin https://github.com/<username>/dplyme.git
 git push origin master
 
 git init
 git add README.md
 git commit -m "1st commit"
-git add remote origin url https://github.com/iosprogee/iosprogee.github.io.git
+git add remote origin url https://github.com/<username>/<username>.github.io.git
 git push -u origin master
 
 git add .
 git commit -m "2nd commit"
-git remote add origin https://github.com/iosprogee/dplyd-me.git
+git remote add origin https://github.com/<username>/dplyd-me.git
 git pull origin master (pull all commits from master so not to overridde)
 git push origin master
 
