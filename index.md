@@ -25,7 +25,7 @@ Syntax highlighted code block
 
 [Link](https://iosprogee.github.io) and ![Image](bot.png =40x20)
 
-<img src="bot.png" alt="drawing" width="200"/>
+<img src="bot.png" alt="drawing" width="40"/>
 
 
 🛴 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
