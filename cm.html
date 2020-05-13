@@ -4,8 +4,7 @@
   <meta charset="utf-8"/>
   <title>CommonMark</title>
 
-  <!-- <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" /> -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:100,300,400,&display=swap" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css2?family=Roboto:100,300,400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
   <style type="text/css">
@@ -43,7 +42,7 @@
 	    html_sd   = converter.makeHtml(text_sd);
 
 	    document.getElementById('content_cm').innerHTML=html;
-	    console.log(html);
+	    //console.log(html);
 
 	    document.getElementById('content_md').innerHTML=marked(text);
 	    //document.getElementById('content_sd').innerHTML=marked(html_sd);
@@ -57,7 +56,10 @@
 ";
 
     document.getElementById('content_sd').innerHTML=marked(htstr);
+/*
+  <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" /> 
 
+*/
 
   </script>
 
