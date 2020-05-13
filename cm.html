@@ -7,10 +7,11 @@
   <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
   <style type="text/css">
-  	*{font-family: 'Roboto', sans-serif;}
-  	div{
-  	  border:1px solid blue; bottom:1vh; padding: 1em;	
-  	}
+  	*{font-weight: 100;}
+  	body{font-family: 'Roboto', sans-serif; }
+  	div{ border:1px solid blue; margin-bottom:1vh; padding: 1em;	}
+  	code{ background:gray; padding:.8em;}
+  	strong{font-weight: bold;}
   </style>
 </head>
 <body>
@@ -30,7 +31,6 @@
 	    text_sd   = '# hello, markdown!',
 	    html_sd   = converter.makeHtml(text_sd);
 
-
 	fetch('index.md')
 	  .then(response => response.text())
 	  .then(text => {
@@ -44,18 +44,18 @@
 	    console.log(html);
 
 	    document.getElementById('content_md').innerHTML=marked(text);
-	    document.getElementById('content_sd').innerHTML=marked(html_sd);
+	    //document.getElementById('content_sd').innerHTML=marked(html_sd);
 
 	  });
 
 
-	htstr = 
-`# CommonMark \n\n
-## Rendered by ** marked **.
-`;
-	//var parsed = reader.parse(htstr); 
-	//var html = writer.render(parsed); 
-    //document.getElementById('content').innerHTML=html;
+	htstr = " \
+# CommonMark \n\n \
+**Bold** and _Italic_ and  `Code`  text \
+";
+
+    document.getElementById('content_sd').innerHTML=marked(htstr);
+
 
   </script>
 

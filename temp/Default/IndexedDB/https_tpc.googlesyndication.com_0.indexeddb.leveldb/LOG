@@ -1,0 +1,8 @@
+2020/05/13-16:00:52.193 1aa13 Reusing MANIFEST /Users/artee/github.io/iosprogee/temp/Default/IndexedDB/https_tpc.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/05/13-16:00:52.193 1aa13 Recovering log #7
+2020/05/13-16:00:52.193 1aa13 Reusing old log /Users/artee/github.io/iosprogee/temp/Default/IndexedDB/https_tpc.googlesyndication.com_0.indexeddb.leveldb/000007.log 
+2020/05/13-16:01:24.400 29573 Level-0 table #11: started
+2020/05/13-16:01:24.400 29573 Level-0 table #11: 0 bytes OK
+2020/05/13-16:01:24.472 29573 Delete type=0 #7
+2020/05/13-16:01:24.474 29573 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/05/13-16:01:24.474 29573 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

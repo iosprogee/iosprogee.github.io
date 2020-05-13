@@ -1,0 +1,6 @@
+2020/05/13-14:34:45.617 15003 Reusing MANIFEST /Users/artee/github.io/iosprogee/temp/Default/Local Storage/leveldb/MANIFEST-000001
+2020/05/13-14:34:45.617 15003 Recovering log #3
+2020/05/13-14:34:45.618 15003 Reusing old log /Users/artee/github.io/iosprogee/temp/Default/Local Storage/leveldb/000003.log 
+2020/05/13-15:58:01.106 20a2b Level-0 table #5: started
+2020/05/13-15:58:01.143 20a2b Level-0 table #5: 33831 bytes OK
+2020/05/13-15:58:01.223 20a2b Delete type=0 #3
