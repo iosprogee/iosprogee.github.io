@@ -16,19 +16,25 @@
 
 
   <script>
-	fetch('README.md')
-	  .then(response => response.text())
-	  .then(text => console.log(text))
-
 	var reader = new commonmark.Parser();
 	var writer = new commonmark.HtmlRenderer();
+
+	fetch('README.md')
+	  .then(response => response.text())
+	  .then(text => {
+		var parsed = reader.parse(text); 
+		var html = writer.render(parsed); 
+	    document.getElementById('content').innerHTML=html;
+	  });
+
+
 	htstr = 
 `# CommonMark \n\n
 ## Rendered by ** marked **.
 `;
-	var parsed = reader.parse(htstr); 
-	var html = writer.render(parsed); 
-    document.getElementById('content').innerHTML=html;
+	//var parsed = reader.parse(htstr); 
+	//var html = writer.render(parsed); 
+    //document.getElementById('content').innerHTML=html;
 
   </script>
 
