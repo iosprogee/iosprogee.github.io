@@ -5,8 +5,8 @@
   <title>Marked in the browser</title>
   <!--
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"  />
--->
-  <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <style type="text/css">
   	*{font-family: 'Roboto', sans-serif;}
@@ -14,17 +14,33 @@
 </head>
 <body>
   <div id="content"></div>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
 
 
   <script>
+  var rawFile = new XMLHttpRequest();
+  rawFile.open("GET", "README.md",true);
+  rawFile.onreadystatechange = function() {
+    if (rawFile.readyState === 4) {
+      var allText = rawFile.responseText;
+      //document.getElementById("textSection").innerHTML = allText;
+      console.log(allText);
+    }
+    console.log("Done");
+  }
+  rawFile.send();
+
+
 	var reader = new commonmark.Parser();
 	var writer = new commonmark.HtmlRenderer();
-	var parsed = reader.parse("# Browser in Mark\n\nRendered by **marked**."); // parsed is a 'Node' tree
+	htstr = 
+`# CommonMark \n\n
+## Rendered by ** marked **.
+`;
+	var parsed = reader.parse(htstr); 
 	var html = writer.render(parsed); 
     document.getElementById('content').innerHTML=html;
 
-    //document.getElementById('content').innerHTML=marked('# Browser in Mark\n\nRendered by **marked**.');
   </script>
 
 <!-- 

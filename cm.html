@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>CommonMark</title>
+
+  <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+  <style type="text/css">
+  	*{font-family: 'Roboto', sans-serif;}
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
+
+
+  <script>
+	fetch('README.md')
+	  .then(response => response.text())
+	  .then(text => console.log(text))
+
+	var reader = new commonmark.Parser();
+	var writer = new commonmark.HtmlRenderer();
+	htstr = 
+`# CommonMark \n\n
+## Rendered by ** marked **.
+`;
+	var parsed = reader.parse(htstr); 
+	var html = writer.render(parsed); 
+    document.getElementById('content').innerHTML=html;
+
+  </script>
+
+<!-- 
+<script src="//cdn.jsdelivr.net/npm/marked/marked.min.js"></script>  	
+https://raw.githubusercontent.com/commonmark/commonmark.js/master/dist/commonmark.js
+https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js
+-->
+</body>
+</html>
