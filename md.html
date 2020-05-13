@@ -3,19 +3,34 @@
 <head>
   <meta charset="utf-8"/>
   <title>Marked in the browser</title>
+  <!--
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"  />
+-->
+  <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <style type="text/css">
+  	*{font-family: 'Roboto', sans-serif;}
+  </style>
 </head>
 <body>
   <div id="content"></div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
 
-  <!-- 
+
+  <script>
+	var reader = new commonmark.Parser();
+	var writer = new commonmark.HtmlRenderer();
+	var parsed = reader.parse("# Browser in Mark\n\nRendered by **marked**."); // parsed is a 'Node' tree
+	var html = writer.render(parsed); 
+    document.getElementById('content').innerHTML=html;
+
+    //document.getElementById('content').innerHTML=marked('# Browser in Mark\n\nRendered by **marked**.');
+  </script>
+
+<!-- 
 <script src="//cdn.jsdelivr.net/npm/marked/marked.min.js"></script>  	
 https://raw.githubusercontent.com/commonmark/commonmark.js/master/dist/commonmark.js
 https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js
-  -->
-  <script>
-    document.getElementById('content').innerHTML =
-      marked('# Browser in Mark\n\nRendered by **marked**.');
-  </script>
+-->
 </body>
 </html>
