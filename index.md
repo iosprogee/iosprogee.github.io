@@ -23,10 +23,10 @@ Syntax highlighted code block
 
 ** Bold ** and _ Italic _ and ` Code ` text
 
-[Link](url) and ![Image](src)
+[Link]("https://iosprogee.github.io") and ![Image]('bot.png')
 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+🛴 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
 ### Jekyll Themes
 
