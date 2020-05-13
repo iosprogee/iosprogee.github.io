@@ -8,10 +8,14 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
   <style type="text/css">
   	*{font-family: 'Roboto', sans-serif;}
+  	div{
+  	  border:1px solid blue; bottom:1vh; padding: 1em;	
+  	}
   </style>
 </head>
 <body>
-  <div id="content_md" style="border:1px solid blue; bottom:1vh; padding: 1em;"></div>
+  <div id="content_sd"></div>
+  <div id="content_md"></div>
   <div id="content_cm"></div>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
@@ -21,14 +25,25 @@
 	var reader = new commonmark.Parser();
 	var writer = new commonmark.HtmlRenderer();
 
+	var converter = new showdown.Converter(),
+	    text_sd   = '# hello, markdown!',
+	    html_sd   = converter.makeHtml(text_sd);
+
+
 	fetch('index.md')
 	  .then(response => response.text())
 	  .then(text => {
 		var parsed = reader.parse(text); 
 		var html = writer.render(parsed); 
-	    document.getElementById('content_cm').innerHTML=html;
 
-	    document.getElementById('content_md').innerHTML=marked(text);;
+	    text_sd   = text,
+	    html_sd   = converter.makeHtml(text_sd);
+
+	    document.getElementById('content_cm').innerHTML=html;
+	    console.log(html);
+
+	    document.getElementById('content_md').innerHTML=marked(text);
+	    document.getElementById('content_sd').innerHTML=marked(html_sd);
 
 	  });
 

@@ -23,7 +23,7 @@ Syntax highlighted code block
 
 ** Bold ** and _ Italic _ and ` Code ` text
 
-[Link](https://iosprogee.github.io) and ![Image](bot.png =40x20)
+[Link](https://iosprogee.github.io) and ![Image](bot.png =40)
 
 <img src="bot.png" alt="drawing" width="40"/>
 
