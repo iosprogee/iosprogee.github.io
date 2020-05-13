@@ -23,7 +23,7 @@ Syntax highlighted code block
 
 ** Bold ** and _ Italic _ and ` Code ` text
 
-[Link](https://iosprogee.github.io) and ![Image](bot.png)
+[Link](https://iosprogee.github.io) and ![Image](bot.png =40x20)
 
 
 🛴 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
