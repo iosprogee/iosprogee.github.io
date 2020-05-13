@@ -11,9 +11,11 @@
   </style>
 </head>
 <body>
-  <div id="content"></div>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
+  <div id="content_md"></div>
+  <div id="content_cm"></div>
 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/marked/marked.min.js"></script>  	
 
   <script>
 	var reader = new commonmark.Parser();
@@ -24,7 +26,10 @@
 	  .then(text => {
 		var parsed = reader.parse(text); 
 		var html = writer.render(parsed); 
-	    document.getElementById('content').innerHTML=html;
+	    document.getElementById('content_cm').innerHTML=html;
+
+	    document.getElementById('content_md').innerHTML=marked(text);;
+
 	  });
 
 
