@@ -6,7 +6,13 @@
 </head>
 <body>
   <div id="content"></div>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="//raw.githubusercontent.com/commonmark/commonmark.js/master/dist/commonmark.js"></script>
+
+  <!-- 
+<script src="//cdn.jsdelivr.net/npm/marked/marked.min.js"></script>  	
+https://raw.githubusercontent.com/commonmark/commonmark.js/master/dist/commonmark.js
+https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js
+  -->
   <script>
     document.getElementById('content').innerHTML =
       marked('# Marked in browser\n\nRendered by **marked**.');
