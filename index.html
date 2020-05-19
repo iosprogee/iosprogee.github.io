@@ -22,7 +22,7 @@
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="FBDBQS">
+  <meta name="apple-mobile-web-app-title" content="">
   <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
 
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -287,6 +287,9 @@ textarea:focus, input:focus{
   l.type = 'image/x-icon'; l.rel = 'shortcut icon'; 
   l.href = 'https://iosprogee.github.io/favicon.ico';
   d.getElementsByTagName('head')[0].appendChild(l);
+
+  d.querySelector('meta[name="apple-mobile-web-app-title"]').setAttribute("content",  d.title);
+
 
   const aFields=['id','name','email','phone','remarks'];
   function clearInputs(aF=aFields,focal){
