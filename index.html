@@ -67,12 +67,24 @@ select {
 
 label {
   display: inline-block;
-  font-size:1.1em;
+  font-size:.9em;
   float: right;
   padding-top: 1vh;
   padding-bottom: 0;
+  margin-bottom: 0;
   padding-right: 1vw;  
   color: royalblue;
+}
+button[type=small] {
+  background-color: #0d47a1;
+  color: white;
+  padding: 2px 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  width: auto;
+  font-size: 0.9em;
 }
 button[type=button] {
   background-color: #0d47a1;
@@ -102,6 +114,7 @@ textarea{
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 2vh 2vw;
+  height: 97vh;
 }
 
 .col-left {
@@ -146,16 +159,19 @@ h2{
 //input:invalid { border: 1px solid red; }  
 textarea:focus, input:focus{
   box-shadow: 0 0 5px #0d47a1; border: 1px solid #0d47a1;}
+//.material-icons{ font-size: .8em; }  
 </style>
 </head>
 <body>
 <div class="main">
-  <div class="row">
-    <h2>Customer Form</h2>
-    <span id="search" class="material-icons right blue">search</span> 
-    <span id="check" class="material-icons right blue">done</span>
-    <span id="clear" class="material-icons right blue">clear</span> 
-  </div>  
+  <div class="row" style="margin: 2vh 1vw;">
+    <h2>Client Enquiry Form</h2>
+    <button id="delete" class="material-icons right blue" type="small">delete</button> 
+    <button id="clear" class="material-icons right blue" type="small">clear</button> 
+    <button id="search" class="material-icons right blue" type="small">search</button> 
+    <button id="save" class="material-icons right blue" type="small">save</button>
+  </div>
+
   <form action="" autocomplete="off">
     <div id="id-row" class="row hide">
      <div class="col-left">
@@ -171,7 +187,7 @@ textarea:focus, input:focus{
     <div class="row">
      <div class="col-left">
       <label for="name">
-        <span class="material-icons">account_box</span>
+        <span class="material-icons" style="font-size:1rem">face</span>
         Name</label>
      </div>
      <div class="col-right">
@@ -182,7 +198,7 @@ textarea:focus, input:focus{
     <div class="row">
      <div class="col-left">
       <label for="phone">
-        <span class="material-icons">phone</span>
+        <span class="material-icons" style="font-size:1rem">phone</span>
         Phone</label>
      </div>
      <div class="col-right">
@@ -193,7 +209,7 @@ textarea:focus, input:focus{
     <div class="row">
      <div class="col-left">
       <label for="email">
-        <span class="material-icons">alternate_email</span>
+        <span class="material-icons" style="font-size:1rem">alternate_email</span>
         Email</label>
       </div>
       <div class="col-right">
@@ -204,7 +220,7 @@ textarea:focus, input:focus{
     <div class="row hide">
      <div class="col-left">
        <label for="country">
-        <span class="material-icons">outlined_flag</span>
+        <span class="material-icons" style="font-size:1rem">outlined_flag</span>
         Country</label>
      </div>
      <div class="col-right">
@@ -221,16 +237,16 @@ textarea:focus, input:focus{
     <div class="row">
       <div class="col-left">
        <label for="subject">
-       <span class="material-icons">notes</span>
+       <span class="material-icons" style="font-size:1rem">notes</span>
         Notes</label>
       </div>
       <div class="col-right">
        <textarea placeholder="remarks" id="remarks"></textarea>
       </div>
     </div>
-    <div class="row">
-     <div class="col-left">&nbsp;
-     </div>
+
+    <div class="row hide">
+     <div class="col-left">&nbsp;</div>
      <div class="col-right">
       <button id="submit" type="button">Submit</button>
      </div>
@@ -265,7 +281,7 @@ textarea:focus, input:focus{
   fb.analytics();
 
   let d=document;
-  d.title = "Customer Form"
+  d.title = "CEF"
 
   var l = d.querySelector("link[rel*='icon']") || d.createElement('link');
   l.type = 'image/x-icon'; l.rel = 'shortcut icon'; 
@@ -312,13 +328,17 @@ textarea:focus, input:focus{
       clearInputs();
     });
 
+    d.getElementById('save').addEventListener('click',(e)=>{
+      writeData2FB();
+    });    
+/*
     var idHide=true;
     d.getElementById('check').addEventListener('click',(e)=>{
       if(idHide) d.getElementById("id-row").classList.remove('hide')
       else d.getElementById("id-row").classList.add('hide');
       idHide=!idHide;    
     });
-
+*/
     d.getElementById('search').addEventListener('click',(e)=>{
       if(d.getElementById('name').checkValidity()){
         fb.database().ref('customer').orderByChild("name")
@@ -326,7 +346,7 @@ textarea:focus, input:focus{
           clearInputs();          
           if (snap.exists()){
             let record = Object.entries(snap.val())[0]
-            console.log('key:',record[0]); console.log('name:',record[1].name)
+            console.log(`key: ${record[0]}, name: ${record[1].name}`)
             //for(var propertyName in record) console.log(propertyName);
             aFields.forEach((el) => {
               if(el=='id') d.getElementById(el).value = record[0]
