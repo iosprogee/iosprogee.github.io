@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <title>CommonMark</title>
+  <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
+  <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-  <link href="//fonts.googleapis.com/css2?family=Roboto:100,300,400&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
   <style type="text/css">
   	*{font-weight: 100;}
   	body{font-family: 'Roboto', sans-serif; }
@@ -20,40 +20,38 @@
   <div id="content_md"></div>
   <div id="content_cm"></div>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/marked/marked.min.js"></script> 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script> 
 
   <script>
-	var reader = new commonmark.Parser();
-	var writer = new commonmark.HtmlRenderer();
+	var parser_cm = new commonmark.Parser();
+	var render_cm = new commonmark.HtmlRenderer();
 
-	var converter = new showdown.Converter(),
-	    text_sd   = '# hello, markdown!',
-	    html_sd   = converter.makeHtml(text_sd);
+	var parser_sd = new showdown.Converter();
+	var text_sd   = '# hello, markdown!';
+	var html_sd   = converter.makeHtml(text_sd);
+
+	var htstr = " \
+# CommonMark \n\n \
+**Bold** and _Italic_ and  `Code`  text \
+";
 
 	fetch('index.md')
 	  .then(response => response.text())
 	  .then(text => {
-		var parsed = reader.parse(text); 
-		var html = writer.render(parsed); 
+		var parsed_cm = cm_parser.parse(text); 
+		var html_cm = cm_render.render(parsed_cm); 
 
-	    text_sd   = text,
-	    html_sd   = converter.makeHtml(text_sd);
+	    text_sd = text;
+	    html_sd = parser_cm.makeHtml(text_sd);
 
-	    document.getElementById('content_cm').innerHTML=html;
-	    //console.log(html);
+	    document.getElementById('content_cm').innerHTML=html_cm;
 
 	    document.getElementById('content_md').innerHTML=marked(text);
 	    //document.getElementById('content_sd').innerHTML=marked(html_sd);
 
 	  });
-
-
-	htstr = " \
-# CommonMark \n\n \
-**Bold** and _Italic_ and  `Code`  text \
-";
 
     document.getElementById('content_sd').innerHTML=marked(htstr);
 /*

@@ -1,0 +1,86 @@
+<!doctype html>
+<!-- 
+	to run
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --disable-web-security --user-data-dir="/Users/artee/temp" file:///Users/artee/github.io/iosprogee/local.html
+
+-->
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+  <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style type="text/css">
+  	*{font-weight: 300;}
+  	body{font-family: 'Roboto', sans-serif; }
+  	div{ border:1px solid blue; margin:2vh 1vw; padding: 1em 2em;}
+  	code{ background:#a6a8cc; padding:.8em;}
+  	strong{font-weight: bold;}
+  	img{ width:50px;  vertical-align:middle;}
+  </style>
+</head>
+<body>
+  <div id="content_sd"></div>
+  <div id="content_md"></div>
+  <div id="content_cm"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/commonmark/0.29.1/commonmark.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script> 
+  <script id="txtBlock" type="text/html">
+# TextBlock 
+**Bold** and _Italic_ and  `Code`  text
+
+<code>
+<em style="color:red">function</em> bot(){ 
+  var x=1;  
+  return (x+x) 
+}</code>  <img src='bot.gif' alt='drawing' width='40'/>   
+
+</script>
+  <script>
+	var reader = new commonmark.Parser({smart: true});
+	var writer = new commonmark.HtmlRenderer({softbreak: "<br/>"});
+
+	var converter = new showdown.Converter(),
+	    text_sd   = '# hello, markdown!',
+	    html_sd   = converter.makeHtml(text_sd);
+
+	var htstr = `
+# CommonMark \n\n 
+**Bold** and _Italic_ and  \`Code\`  text \n
+<img src='bot.gif' alt='drawing' width='40'/>
+\`
+  <em style="red"> function </em>
+\`
+`;
+
+	var rawFile = new XMLHttpRequest();
+	rawFile.open("GET", "index.md",true);
+	rawFile.onreadystatechange = function() {
+	if (rawFile.readyState === 4) {
+	    var text = rawFile.responseText;
+
+
+	    text_sd   = text,
+	    html_sd   = converter.makeHtml(htstr);
+	    document.getElementById('content_cm').innerHTML=html_sd;
+
+	    document.getElementById('content_md').innerHTML=marked(text);
+
+	    var parsed = reader.parse(document.getElementById('txtBlock').innerHTML); 
+	    var html = writer.render(parsed); 
+	    document.getElementById('content_sd').innerHTML=html;
+	  }
+	}
+	rawFile.send();
+
+    //document.getElementById('content_sd').innerHTML=marked(htstr);
+  </script>
+
+</body>
+</html>
+
+Request URL: https://tuwz0i1tl0.execute-api.us-east-1.amazonaws.com/prod/tts?l=0&r=12&s=1&v=aca
+
