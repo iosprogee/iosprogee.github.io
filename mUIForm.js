@@ -11,7 +11,6 @@ var firebaseConfig = {
 };
 let fb=firebase;
 fb.initializeApp(firebaseConfig);
-fb.analytics();
 
 let d=document;
 d.title = "CEF"
@@ -23,6 +22,16 @@ d.getElementsByTagName('head')[0].appendChild(l);
 
 d.querySelector('meta[name="apple-mobile-web-app-title"]').setAttribute("content",  d.title);
 
+d.onkeypress = function (e) {
+  e = e || window.event;  //console.log(`Pressed: ${e.keyCode}`);
+  if (e.keyCode == 13) {
+    e.preventDefault();
+    const inputs = Array.prototype.slice.call(document.querySelectorAll("input,textarea"));
+    const index = (inputs.indexOf(document.activeElement) + 1) % inputs.length;
+    const input = inputs[index];
+    input.focus(); //input.select()      
+  }
+};
 
 const aFields=['id','name','email','phone','remarks'];
 function clearInputs(aF=aFields,focal){
@@ -60,8 +69,18 @@ window.addEventListener('load',()=>{
   //d.getElementById("saved").classList.add("hide")
   d.getElementById("name").focus()
 
-  d.getElementById('clear').addEventListener('click',(e)=>{
-    clearInputs();
+  if(d.getElementById('clear')) d.getElementById('clear').addEventListener('click',(e)=>{clearInputs()});
+  //if(d.getElementById('list')) d.getElementById('list').addEventListener('click',(e)=>{console.log('list')});
+
+  divList=d.getElementById("div-list"); divForm=d.getElementById("div-form");
+  d.getElementById('list').addEventListener('click',(e)=>{
+    if(divList.classList.contains('hide')){
+      divList.classList.remove('hide'); 
+      divForm.classList.add('hide');      
+    } else{
+      divForm.classList.remove('hide'); 
+      divList.classList.add('hide');
+    }
   });
 
   d.getElementById('save').addEventListener('click',(e)=>{
