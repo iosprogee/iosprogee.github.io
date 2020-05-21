@@ -1,4 +1,5 @@
-### Reference[https://pages.github.com/]
+
+** [Reference](https://pages.github.com/) **
 
 UPDATE <username>.github.io
  git add -A             #--all
@@ -11,7 +12,8 @@ CHANGE NAME & EMAIL
  git config --global user.name "name"
  git config --global --list
 
-CONFIGURE GIT
+
+## ⛑️ ** CONFIGURE GIT **
  nano .git/config 
 
 GHPAGES to MASTER
