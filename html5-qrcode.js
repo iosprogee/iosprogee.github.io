@@ -396,8 +396,8 @@ var Html5QrcodeScanner = function() {
       b.id = c, b.style.width = "100%", b.style.minHeight = "100px", b.style.textAlign = "center", a.appendChild(b), this.__insertCameraScanImageToScanRegion(); var d = document.createElement("div"),
         e = this.__getDashboardId();
       d.id = e, d.style.width = "100%", a.appendChild(d), this.__setupInitialDashboard(d) } }, { key: "__setupInitialDashboard", value: function(a) { this.__createSection(a), this.__createSectionControlPanel(), this.__createSectionSwap() } }, { key: "__createHeader", value: function(a) { var b = document.createElement("div");
-      b.style.textAlign = "left", b.style.margin = "0px", b.style.padding = "5px", b.style.fontSize = "18px", b.style.borderBottom = "1px solid rgba(192, 192, 192, 0.18)", a.appendChild(b); var c = document.createElement("span");
-      c.innerHTML = "QR Code Scanner", b.appendChild(c); var d = document.createElement("span");
+      b.style.textAlign = "center", b.style.margin = "0px", b.style.padding = "5px", b.style.fontSize = "18px", b.style.borderBottom = "1px solid rgba(192, 192, 192, 0.18)", a.appendChild(b); var c = document.createElement("span");
+      c.innerHTML = "QR Scanner", b.appendChild(c); var d = document.createElement("span");
       d.id = this.__getStatusSpanId(), d.style.float = "right", d.style.padding = "4px 4px",d.style.margin = "1px 4px 1px 10px", d.style.fontSize = "xx-small", d.style.background = "#dedede6b", d.style.border = "1px solid #00000000", d.style.color = "rgb(17, 17, 17)", b.appendChild(d), this.__setStatus("IDLE"); var e = document.createElement("div");
       e.id = this.__getHeaderMessageContainerId(), e.style.display = "none", e.style.fontSize = "14px", e.style.padding = "2px 10px", e.style.marginTop = "4px", e.style.borderTop = "1px solid #f6f6f6", b.appendChild(e) } }, { key: "__createSection", value: function(a) { var b = document.createElement("div");
       b.id = this.__getDashboardSectionId(), b.style.width = "100%", b.style.padding = "0px", b.style.textAlign = "left", a.appendChild(b) } }, { key: "__createSectionControlPanel", value: function() { var b = this,
