@@ -2651,8 +2651,8 @@ var Html5QrcodeScanner = function() {
               , d = document.getElementById(this.__getDashboardSectionCameraScanRegionId());
             d.style.textAlign = "center";
             var e = document.createElement("span");
-            //e.innerHTML = "Select Camera (".concat(b.length, ") &nbsp;"),
-            e.innerHTML = "&nbsp;",
+            e.innerHTML = "Select Camera (".concat(b.length, ") &nbsp;"),
+            //e.innerHTML = "&nbsp;",
             e.style.padding = "2vh";
             e.style.display = "block";
             var f = document.createElement("select");
@@ -2660,7 +2660,7 @@ var Html5QrcodeScanner = function() {
             for (var g = 0; g < b.length; g++) {
                 var h = b[g]
                   , j = h.id
-                  , k = null == h.label ? j : /*"Built-In CaM",*/  h.label,
+                  , k = null == h.label ? j : h.label, /*"Built-In CaM",*/  
                 l = document.createElement("option");
                 l.value = j,
                 l.innerHTML = k,
@@ -2672,10 +2672,10 @@ var Html5QrcodeScanner = function() {
 
             var m = document.createElement("span")
               , n = document.createElement("button");
-            n.classList.add('mdc-icon-button');  
-            n.classList.add('material-icons');
-            /*n.innerHTML = "Start Scanning",*/
-            n.innerText = 'camera',
+            //n.classList.add('mdc-icon-button')  
+            //n.classList.add('material-icons')
+            //n.innerText = 'camera',
+            n.innerHTML = "Start Scanning",
             m.appendChild(n);
             var o = document.createElement("button");
             o.classList.add('mdc-icon-button');  
