@@ -183,8 +183,8 @@
     </div> <!-- div class="mdc-card__primary-action" -->
 
 
-    <div class="mdc-card__actions" id="section--qr" style="margin-top:6vh;">
-      <div id="reader" width="600px" height="600px" style="margin:auto;"></div>
+    <div class="mdc-card__actions" id="section--qr" style="margin-top:4vh;">
+      <div id="reader" width="500px" height="500px" style="margin:auto;"></div>
       <!-- <input type="file" id="qr-input-file" accept="image/*"> -->
 
     </div>
@@ -231,7 +231,7 @@ function onScanFailure(error) {
   //console.warn(`QR error = ${error}`);
 }
 
-let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox:240 },true);
+let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox:200 },true);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
 function StopIt(){
