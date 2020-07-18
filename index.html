@@ -1,1 +1,267 @@
-<!doctypehtml><meta charset="utf-8"><meta name="viewport"content="minimum-scale=1,initial-scale=1,width=device-width,maximum-scale=1"><title>No Title</title><meta name="msapplication-tap-highlight"content="no"><meta name="mobile-web-app-capable"content="yes"><meta name="application-name"content=""><meta name="theme-color"content="#303F9F"><meta name="apple-mobile-web-app-capable"content="yes"><meta name="apple-mobile-web-app-status-bar-style"content="black-translucent"><meta name="apple-mobile-web-app-title"content=""><meta name="apple-mobile-web-app-status-bar-style"content="#303F9F"><link rel="icon"href="/favicon.ico"type="image/x-icon"><meta name="msapplication-TileColor"content="#3372DF"><meta name="msapplication-navbutton-color"content="#303F9F"><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"rel="stylesheet"><link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet"><link rel="stylesheet"type="text/css"href="index.css"><div class="main"><div class="row nav"style=""><h2>Client Enquiry Form</h2><div class="right"style="padding: 1vh 0;"><button id="delete"class="material-icons blue hide"type="small">delete</button> <button id="clear"class="material-icons blue"type="small">clear</button> <button id="list"class="material-icons blue"type="small">list</button> <button id="search"class="material-icons blue"type="small">search</button> <button id="save"class="material-icons blue"type="small">save</button></div></div><div id="div-form"class=""style="margin-top: 7vh;"><form autocomplete="off"><div id="id-row"class="row hide"><div class="col-left"><label for="id"><span class="material-icons">android</span> ID</label></div><div class="col-right"><input id="id"value=""placeholder="id"disabled="disabled"></div></div><div class="row"><div class="col-left"><label for="name"><span class="material-icons"style="font-size:1rem">face</span> Name</label></div><div class="col-right"><input id="name"placeholder="name"required></div></div><div class="row"><div class="col-left"><label for="phone"><span class="material-icons"style="font-size:1rem">phone</span> Phone</label></div><div class="col-right"><input type="tel"id="phone"placeholder="phone"pattern="[0-9]{2,}-[0-9]{4}-[0-9]{4}"required></div></div><div class="row"><div class="col-left"><label for="email"><span class="material-icons"style="font-size:1rem">alternate_email</span> Email</label></div><div class="col-right"><input type="email"id="email"placeholder="e-mail"></div></div><div class="row hide"><div class="col-left"><label for="country"><span class="material-icons"style="font-size:1rem">outlined_flag</span> Country</label></div><div class="col-right"><select id="country"placeholder="country"><option value=""selected="selected"data-defaul>country<option value="australia">Australia<option value="philippines">Philippines<option value="usa">USA<option value="canada">Canada</select></div></div><div class="row"><div class="col-left"><label for="subject"><span class="material-icons"style="font-size:1rem">notes</span> Notes</label></div><div class="col-right"><textarea placeholder="remarks"id="remarks"></textarea></div></div><div class="row hide"><div class="col-left">&nbsp;</div><div class="col-right"><button id="submit"type="button">Submit</button></div></div></form></div><div id="div-list"class="hide"style="margin-top: 7vh;"></div></div><script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script><script src="index.js"></script>
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, maximum-scale=1"/>
+
+  <title>qrRead</title>
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="">
+  <meta name="theme-color" content="#303F9F">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Tile icon for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-navbutton-color" content="#303F9F">
+
+  <!-- link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- <link rel="stylesheet" type="text/css" href="mUIForm.css">. -->
+
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+<!-- https://github.com/material-components/material-components-web/tree/master/packages/mdc-theme#css-custom-properties -->  
+<!-- [colortool](https://material.io/resources/color/#!/)-->
+<style type="text/css">
+*{
+  font-family: 'Roboto', sans-serif;
+}
+:root {
+  --mdc-theme-primary: #0d47a1;
+  --mdc-theme-secondary: #b0bec5;
+  --mdc-theme-on-primary: #ffffff;
+  --mdc-theme-on-secondary: #000000;  
+}
+.container{
+  width: 80%;
+  margin: auto;
+}
+.full-width {
+  width: 100%;
+}
+.text-field-row {
+  margin: 1vh;
+}
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: var(--mdc-theme-primary);
+}
+.mdc-text-field__icon {
+  padding-left: 16px;
+  padding-right: 16px;
+  color: var(--mdc-theme-primary);
+}
+.mdc-icon-button {
+  color: var(--mdc-theme-primary);
+}
+.mdc-text-field:not(.mdc-text-field--disabled)+.mdc-text-field-helper-line .mdc-text-field-helper-text {
+  color:red;
+}
+.x-small{
+  font-size:.88em;
+  width: 24px; 
+  height: 24px; 
+  padding: 4px;  
+}
+.hide{
+  display:none; 
+}
+#qrcode {
+  width:160px;
+  height:160px;
+  margin-top:15px;
+}
+@media screen and (max-width:600px) {
+  .container{
+    width: 100%;
+    margin: 0;
+  }
+  .x-small{
+    font-size:1em;
+    //padding: 4px;  
+  }
+
+}
+#reader__dashboard_section_csr{
+  padding:1vh;
+}
+#reader__status_span{
+  font-size: xx-small; 
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="mdc-card mdc-card--outlined mdc-shadow--2dp" style="height:98vh">
+
+    <div class="mdc-card__actions">
+      <button class="mdc-button mdc-card__action mdc-card__action--button">
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label" style="text-align: left;">QR Reader</span>
+      </button>      
+      <div class="mdc-card__action-icons">
+        <div class="mdc-touch-target-wrapper"><button id="btn--qr" class="mdc-icon-button  material-icons x-small" onclick="makeCode();">qr_code</button></div>
+      </div>
+    </div>   <!-- div class="mdc-card__actions" -->    
+  
+
+    <div class="mdc-card__primary-action hide" id="section--form" style="margin-top:8vh;">
+      <div class="mdc-typography-row" style="margin:1vh 0">
+      </div>
+
+      <div class="text-field-row">
+        <div class="mdc-text-field text-field mdc-text-field--outlined mdc-text-field--with-leading-icon text--name full-width">
+          <i class="material-icons mdc-text-field__icon">face</i>
+          <input type="text" id="text--name" class="mdc-text-field__input" aria-describedby="text-field-outlined-leading-helper-text" onblur="fnBlur(this)" onfocus="fnFocus()">
+          <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label class="mdc-floating-label" for="text--name">Name</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+        <div class="mdc-text-field-helper-line">
+          <p class="mdc-text-field-helper-text" id="helper--name"></p>
+        </div>        
+      </div>    
+
+      <div class="text-field-row">
+        <div class="mdc-text-field text-field mdc-text-field--outlined mdc-text-field--with-leading-icon text--phone full-width">
+          <i class="material-icons mdc-text-field__icon">phone</i>
+          <input type="text" id="text--phone" class="mdc-text-field__input" aria-describedby="text-field-outlined-leading-helper-text" onblur="fnBlur(this)" onfocus="fnFocus()">
+          <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label class="mdc-floating-label" for="text--phone">Phone</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+        <div class="mdc-text-field-helper-line">
+          <p class="mdc-text-field-helper-text" id="helper--phone"></p>
+        </div>        
+      </div>   
+
+      <div class="text-field-row">
+        <div class="mdc-text-field text-field mdc-text-field--outlined mdc-text-field--with-leading-icon text--adrs full-width">
+          <i class="material-icons mdc-text-field__icon">home</i>
+          <input type="text" id="text--adrs" class="mdc-text-field__input" aria-describedby="text-field-outlined-leading-helper-text" onblur="fnBlur(this)" onfocus="fnFocus()">
+          <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label class="mdc-floating-label" for="text--phone">Address</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+        <div class="mdc-text-field-helper-line">
+          <p class="mdc-text-field-helper-text" id="helper--adrs"></p>
+        </div>        
+      </div>               
+
+    </div> <!-- div class="mdc-card__primary-action" -->
+
+
+    <div class="mdc-card__actions" id="section--qr" style="margin-top:20vh;">
+      <div id="reader" width="600px" height="600px" style="margin:auto;"></div>
+      <!-- <input type="file" id="qr-input-file" accept="image/*"> -->
+
+    </div>
+
+  </div> <!-- div class="mdc-card mdc-card--outlined mdc-shadow--2dp" -->
+
+</div> <!-- div class="container" -->
+
+
+
+<!-- Required Material Web -->
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+ 
+<!-- Reader -->
+<script src="html5-qrcode.js"></script>
+
+
+<script>
+//https://github.com/mebjas/html5-qrcode
+
+/*
+when testing use localhost or https as chrome will not enumerate camera
+*/
+var scanOk = false;
+function onScanSuccess(qrMessage) {
+  if(!scanOk){
+    //console.log(`QR Data:\n${qrMessage}`);
+    var obj = JSON.parse(qrMessage);
+    document.getElementById("text--name").value  = obj.name
+    document.getElementById("text--phone").value = obj.phone
+    document.getElementById("text--adrs").value = obj.address
+    document.getElementById("section--form").classList.remove("hide");
+    document.getElementById("section--qr").classList.add("hide");
+
+    mdc.textField.MDCTextField.attachTo(document.querySelector('.text--name'));
+    mdc.textField.MDCTextField.attachTo(document.querySelector('.text--phone'));
+    mdc.textField.MDCTextField.attachTo(document.querySelector('.text--adrs'));    
+    scanOk = true;
+    StopIt();
+  }
+}
+
+function onScanFailure(error) {
+  //console.warn(`QR error = ${error}`);
+}
+
+let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox:240 },false);
+html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+function StopIt(){
+  html5QrCode.stop().then(ignore => {
+    console.log("QR Code scanning stopped");
+  }).catch(err => { 
+    console.log("Unable to stop scanning");
+   }); 
+}
+
+/*
+const html5QrCode = new Html5Qrcode(// element id // "reader");
+// File based scanning
+const fileinput = document.getElementById('qr-input-file');
+fileinput.addEventListener('change', e => {
+  if (e.target.files.length == 0) {
+    // No file selected, ignore 
+    return;
+  }
+
+  const imageFile = e.target.files[0];
+  // Scan QR Code
+  html5QrCode.scanFile(imageFile, true)
+  .then(qrCodeMessage => {
+    // success, use qrCodeMessage
+    console.log(qrCodeMessage);
+  })
+  .catch(err => {
+    // failure, handle it.
+    console.log(`Error scanning file. Reason: ${err}`)
+  });
+});
+*/
+</script>
+</body>
+</html>
+
+
