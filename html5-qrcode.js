@@ -2597,7 +2597,7 @@ var Html5QrcodeScanner = function() {
             f.style.textAlign = "center";
             var g = document.createElement("button");
             /* g.innerHTML = "Get Camera Access", */
-            g.innerHTML = 'Get Access <span class="material-icons small">camera_alt</span>',
+            g.innerHTML = 'Get CaM <span class="material-icons small">camera_alt</span>',
             g.addEventListener("click", function() {
                 g.disabled = !0,
                 b.__setStatus("PERMISSION"),
