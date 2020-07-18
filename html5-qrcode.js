@@ -2673,10 +2673,10 @@ var Html5QrcodeScanner = function() {
 
             var m = document.createElement("span")
               , n = document.createElement("button");
-            //n.classList.add('mdc-icon-button')  
-            //n.classList.add('material-icons')
-            //n.innerText = 'camera',
-            n.innerHTML = "Start Scanning",
+            n.classList.add('mdc-icon-button')  
+            n.classList.add('material-icons')
+            n.innerText = 'camera',
+            //n.innerHTML = "Start Scanning",
             m.appendChild(n);
             var o = document.createElement("button");
             o.classList.add('mdc-icon-button');  
