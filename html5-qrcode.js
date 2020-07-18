@@ -1962,8 +1962,8 @@ var Html5Qrcode = function() {
                 var l = h.qrbox;
                 if (l < a.MIN_QR_BOX_SIZE)
                     throw "minimum size of 'config.qrbox' is" + " ".concat(a.MIN_QR_BOX_SIZE, "px.");
-                if (l > k)  k = l;
-                    //throw `'config.qrbox' shouldn't be greater(${l} > ${k}) than the width of the HTML element.`
+                if (l > k) 
+                    throw `'config.qrbox' shouldn't be greater(${l} > ${k}) than the width of the HTML element.`
             }
             var m = function(a, b) {
                 var c = h.qrbox;
