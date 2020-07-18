@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, maximum-scale=1"/>
 
-  <title>qrRead</title>
+  <title>qrIR</title>
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -77,6 +77,11 @@
   height: 24px; 
   padding: 4px;  
 }
+.small{
+  font-size:1em;
+  width: 12px; 
+  height: 12px; 
+}
 .hide{
   display:none; 
 }
@@ -112,7 +117,7 @@
     <div class="mdc-card__actions">
       <button class="mdc-button mdc-card__action mdc-card__action--button">
         <div class="mdc-button__ripple"></div>
-        <span class="mdc-button__label" style="text-align: left;">QR Reader</span>
+        <span class="mdc-button__label" style="text-align: left;">QR Identity Reader</span>
       </button>      
       <div class="mdc-card__action-icons">
         <div class="mdc-touch-target-wrapper"><button id="btn--qr" class="mdc-icon-button  material-icons x-small" onclick="">qr_code</button></div>
@@ -226,7 +231,7 @@ function onScanFailure(error) {
   //console.warn(`QR error = ${error}`);
 }
 
-let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox:240 },false);
+let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox:240 },true);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
 function StopIt(){
