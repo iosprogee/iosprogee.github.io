@@ -2668,7 +2668,7 @@ var Html5QrcodeScanner = function() {
             }
             e.appendChild(f),
             d.appendChild(e);
-            f.selectedIndex = b.length -1;
+            //f.selectedIndex = b.length -1;
 
             var m = document.createElement("span")
               , n = document.createElement("button");
