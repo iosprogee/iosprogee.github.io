@@ -2688,6 +2688,8 @@ var Html5QrcodeScanner = function() {
             o.disabled = !0,
             m.appendChild(o),
             d.appendChild(m),
+            document.getElementById("section--qr").style.marginTop="0px";
+
             n.addEventListener("click", function() {
                 f.disabled = !0,
                 n.disabled = !0,
