@@ -2601,7 +2601,7 @@ var Html5QrcodeScanner = function() {
             g.addEventListener("click", function() {
                 g.disabled = !0,
                 b.__setStatus("PERMISSION"),
-                b.__setHeaderMessage("Requesting camera permissions..."),
+                b.__setHeaderMessage("Getting camera permissions..."),
                 Html5Qrcode.getCameras().then(function(c) {
                     b.__setStatus("IDLE"),
                     b.__resetHeaderMessage(),
@@ -2616,6 +2616,7 @@ var Html5QrcodeScanner = function() {
             f.appendChild(g),
             e.appendChild(f);
             //g.click();  //automatically get camera access
+
             var h = document.createElement("div");
             h.id = this.__getDashboardSectionFileScanRegionId(),
             h.style.textAlign = "center",
@@ -2650,10 +2651,10 @@ var Html5QrcodeScanner = function() {
             var c = this
               , d = document.getElementById(this.__getDashboardSectionCameraScanRegionId());
             d.style.textAlign = "center";
-            var e = document.createElement("span");
+            var e = document.createElement("div");
             //e.innerHTML = "Select Camera (".concat(b.length, ") &nbsp;"),
             //e.innerHTML = "<span></span>",
-            e.innerHTML = "Select Camera",
+            e.innerHTML = "Select Camera &nbsp;",
             e.style.padding = "2vh";
             e.style.display = "block";
             var f = document.createElement("select");
@@ -2671,7 +2672,7 @@ var Html5QrcodeScanner = function() {
             d.appendChild(e);
             f.selectedIndex = b.length -1;
 
-            var m = document.createElement("span")
+            var m = document.createElement("div")
               , n = document.createElement("button");
             n.classList.add('mdc-icon-button')  
             n.classList.add('material-icons')
