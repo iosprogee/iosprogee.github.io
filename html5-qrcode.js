@@ -420,7 +420,7 @@ var Html5QrcodeScanner = function() {
        var f = document.createElement("select");
       f.id = this.__getCameraSelectionId(); for (var g = 0; g < b.length; g++) { var h = b[g],
           j = h.id,
-          k = null == h.label ? j : "Built-In CaM" /* h.label,*/
+          k = null == h.label ? j : "Built-In CaM", /* h.label,*/
           l = document.createElement("option");
         l.value = j, l.innerHTML = k, f.appendChild(l) } e.appendChild(f), d.appendChild(e); var m = document.createElement("span"),
         n = document.createElement("button");
