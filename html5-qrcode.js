@@ -2651,7 +2651,8 @@ var Html5QrcodeScanner = function() {
               , d = document.getElementById(this.__getDashboardSectionCameraScanRegionId());
             d.style.textAlign = "center";
             var e = document.createElement("span");
-            e.innerHTML = "Select Camera (".concat(b.length, ") &nbsp;"),
+            //e.innerHTML = "Select Camera (".concat(b.length, ") &nbsp;"),
+            e.innerHTML = "Select Camera",
             //e.innerHTML = "&nbsp;",
             e.style.padding = "2vh";
             e.style.display = "block";
@@ -2668,7 +2669,7 @@ var Html5QrcodeScanner = function() {
             }
             e.appendChild(f),
             d.appendChild(e);
-            //f.selectedIndex = b.length -1;
+            f.selectedIndex = b.length -1;
 
             var m = document.createElement("span")
               , n = document.createElement("button");
@@ -2935,5 +2936,5 @@ _defineProperty(Html5QrcodeScanner, "SCAN_TYPE_FILE", "SCAN_TYPE_FILE"),
 _defineProperty(Html5QrcodeScanner, "STATUS_SUCCESS", "STATUS_SUCCESS"),
 _defineProperty(Html5QrcodeScanner, "STATUS_WARNING", "STATUS_WARNING"),
 _defineProperty(Html5QrcodeScanner, "STATUS_DEFAULT", "STATUS_DEFAULT"),
-_defineProperty(Html5QrcodeScanner, "ASSET_FILE_SCAN", "https://raw.githubusercontent.com/mebjas/html5-qrcode/master/assets/file-scan.gif"),
-_defineProperty(Html5QrcodeScanner, "ASSET_CAMERA_SCAN", "https://raw.githubusercontent.com/mebjas/html5-qrcode/master/assets/camera-scan.gif");
+_defineProperty(Html5QrcodeScanner, "ASSET_FILE_SCAN", "file-scan.gif"),
+_defineProperty(Html5QrcodeScanner, "ASSET_CAMERA_SCAN", "camera-scan.gif");
